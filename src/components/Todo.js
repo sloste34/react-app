@@ -1,8 +1,14 @@
+import { useState } from 'react';
+import Modal from './Modal';
+import Backdrop from './Backdrop';
+
 function Todo(props) {
   //함수의 이름은 반드시 대문자로 작성해야 한다.
+
+  const [ModalIsOpen, setModalisOpen] = useState(false);
+
   function deleteHandler() {
-    console.log('Clicked!');
-    console.log(props.text);
+    setModalisOpen(true);
   }
   return (
     <div className='card'>
@@ -12,6 +18,8 @@ function Todo(props) {
           Delete
         </button>
       </div>
+      {ModalIsOpen && <Modal />}
+      {ModalIsOpen && <Backdrop />}
     </div>
   );
 }
